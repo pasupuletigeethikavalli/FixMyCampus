@@ -1,177 +1,408 @@
 
-.login-container {
-  min-height: 100vh;
-  display: flex;
-  font-family: Arial, sans-serif;
-  background: #f8fafc;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+* {
+  box-sizing: border-box;
 }
 
-.login-left {
-  width: 50%;
-  background: linear-gradient(140deg, #102c52, #176b87);
+.auth-page {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  font-family: 'Inter', sans-serif;
+  background: #f5f8fc;
+  color: #15334f;
+}
+
+/* LEFT PANEL */
+
+.auth-left {
+  background: linear-gradient(145deg, #102d49, #176b78);
   color: white;
-  padding: 45px 9%;
+  padding: 38px 9%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  position: relative;
+  overflow: hidden;
 }
 
-.brand {
+.auth-left::before {
+  content: "";
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.04);
+  right: -180px;
+  top: -130px;
+}
+
+.auth-brand {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 13px;
+  position: relative;
+  z-index: 1;
 }
 
-.brand-icon {
+.auth-logo {
+  width: 46px;
+  height: 46px;
   background: white;
-  color: #176b87;
-  padding: 12px 17px;
+  color: #12647b;
   border-radius: 12px;
-  font-size: 25px;
-  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: 800;
 }
 
-.brand h2 {
-  font-size: 23px;
+.auth-brand h2 {
+  margin: 0;
+  font-size: 21px;
+  font-weight: 800;
 }
 
-.welcome-content {
-  max-width: 480px;
+.auth-brand span {
+  display: block;
+  color: #b8d4e2;
+  font-size: 11px;
+  margin-top: 5px;
 }
 
-.tagline, .form-tag {
-  color: #16b8b0;
-  font-size: 12px;
-  font-weight: bold;
+.auth-hero {
+  max-width: 500px;
+  margin: 50px auto;
+  position: relative;
+  z-index: 1;
+}
+
+.auth-eyebrow {
+  color: #5eead4;
+  font-size: 11px;
   letter-spacing: 2px;
+  font-weight: 700;
 }
 
-.welcome-content h1 {
-  font-size: 45px;
-  line-height: 1.2;
+.auth-hero h1 {
+  font-size: clamp(32px, 3vw, 46px);
+  line-height: 1.25;
+  font-weight: 800;
   margin: 20px 0;
 }
 
-.welcome-content p {
-  color: #d6e4ef;
+.auth-hero > p {
+  color: #d4e5ef;
+  font-size: 14px;
   line-height: 1.8;
+  max-width: 420px;
+  margin-bottom: 28px;
 }
 
-.feature {
-  margin-top: 20px;
+.auth-features {
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+}
+
+.auth-feature {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
   color: #e5f2f7;
 }
 
-.feature span {
-  color: #4ce0c2;
-  margin-right: 10px;
-}
-
-.copyright {
-  font-size: 12px;
-  color: #b7cbd9;
-}
-
-.login-right {
-  width: 50%;
+.auth-feature span {
+  width: 23px;
+  height: 23px;
+  background: rgba(94, 234, 212, 0.15);
+  color: #5eead4;
+  border-radius: 50%;
   display: flex;
-  justify-content: center;
   align-items: center;
-  padding: 30px;
+  justify-content: center;
+  font-weight: 700;
 }
 
-.login-form {
-  width: 100%;
-  max-width: 420px;
+/* CAMPUS VISUAL */
+
+.campus-visual {
+  margin-top: 40px;
+  padding: 20px;
+  max-width: 380px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  background: rgba(255, 255, 255, 0.07);
+  border-radius: 15px;
 }
 
-.login-form h1 {
-  color: #142b45;
-  font-size: 34px;
-  margin: 15px 0 8px;
+.campus-building {
+  width: 75px;
+  height: 75px;
+  min-width: 75px;
+  border-radius: 13px;
+  background: rgba(255, 255, 255, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 42px;
 }
 
-.form-description {
-  color: #718096;
-  margin-bottom: 35px;
-}
-
-.login-form label {
+.visual-text strong {
   display: block;
-  color: #24364b;
   font-size: 14px;
-  font-weight: bold;
-  margin: 20px 0 9px;
+  margin-bottom: 8px;
 }
 
-.login-form input {
+.visual-text span {
+  display: block;
+  color: #c5dce7;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.auth-footer {
+  color: #b9d0df;
+  font-size: 11px;
+  position: relative;
+  z-index: 1;
+}
+
+/* RIGHT PANEL */
+
+.auth-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 45px 30px;
+  background: #f7f9fc;
+}
+
+.auth-form-wrapper {
   width: 100%;
-  padding: 15px;
-  border: 1px solid #dce3eb;
+  max-width: 430px;
+}
+
+/* FORM HEADING */
+
+.form-heading {
+  margin-bottom: 32px;
+}
+
+.form-heading-icon {
+  width: 54px;
+  height: 54px;
+  background: #e0f2f1;
+  border-radius: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 27px;
+  margin-bottom: 22px;
+}
+
+.auth-form-tag {
+  color: #0d9488;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.form-heading h1 {
+  font-size: 34px;
+  font-weight: 800;
+  color: #102d49;
+  margin: 13px 0 10px;
+}
+
+.form-heading p {
+  color: #718096;
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* INPUTS */
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.auth-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.auth-input-group label {
+  color: #334155;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.auth-input-group input {
+  width: 100%;
+  padding: 14px 15px;
+  background: white;
+  border: 1px solid #d5dfeb;
   border-radius: 9px;
   outline: none;
-  font-size: 14px;
+  font-size: 13px;
+  color: #15334f;
+  transition: 0.2s;
 }
 
-.login-form input:focus {
-  border-color: #168b9d;
+.auth-input-group input::placeholder {
+  color: #9aa9b9;
 }
 
-.login-form button {
+.auth-input-group input:focus {
+  border-color: #0d9488;
+  box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.1);
+}
+
+.password-hint {
+  font-size: 11px;
+  color: #94a3b8;
+}
+
+/* SUBMIT BUTTON */
+
+.auth-submit-button {
   width: 100%;
-  padding: 15px;
-  margin-top: 28px;
+  background: #0d9488;
+  color: white;
   border: none;
   border-radius: 9px;
-  background: #126b83;
-  color: white;
-  font-size: 16px;
-  font-weight: bold;
+  padding: 15px;
+  font-size: 14px;
+  font-weight: 700;
+  margin-top: 5px;
+  transition: 0.2s;
+}
+
+.auth-submit-button:hover {
+  background: #0f766e;
+  transform: translateY(-1px);
+}
+
+.auth-submit-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* MESSAGE */
+
+.auth-message {
+  padding: 13px;
+  border-radius: 8px;
+  background: #e0f2fe;
+  color: #075985;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+/* REGISTER / LOGIN SWITCH */
+
+.auth-switch {
+  text-align: center;
+  color: #718096;
+  font-size: 13px;
+  margin-top: 27px;
+}
+
+.auth-switch button {
+  border: none;
+  background: transparent;
+  color: #0d9488;
+  font-size: 13px;
+  font-weight: 700;
+  margin-left: 5px;
   cursor: pointer;
 }
 
-.login-form button:hover {
-  background: #104e68;
+.auth-switch button:hover {
+  color: #0f766e;
+  text-decoration: underline;
 }
 
-.login-form button:disabled {
-  opacity: 0.7;
-  cursor: not-allowed;
-}
+/* SECURITY */
 
-.message {
-  margin-top: 18px;
-  color: #087d60;
-  font-size: 14px;
-}
-
-.register-text {
+.auth-security {
   text-align: center;
-  margin-top: 30px;
-  color: #718096;
-  font-size: 14px;
+  color: #94a3b8;
+  font-size: 11px;
+  margin-top: 35px;
+  padding-top: 20px;
+  border-top: 1px solid #e5ebf2;
 }
 
-.register-text span {
-  color: #126b83;
-  font-weight: bold;
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+  .auth-page {
+    grid-template-columns: 1fr;
+  }
+
+  .auth-left {
+    padding: 28px 7%;
+  }
+
+  .auth-hero {
+    margin: 45px 0;
+  }
+
+  .campus-visual {
+    margin-top: 28px;
+  }
+
+  .auth-footer {
+    margin-top: 20px;
+  }
+
+  .auth-right {
+    padding: 45px 25px;
+  }
 }
 
-@media (max-width: 768px) {
-  .login-container {
-    flex-direction: column;
+@media (max-width: 500px) {
+  .auth-left {
+    padding: 24px;
   }
 
-  .login-left, .login-right {
-    width: 100%;
+  .auth-hero h1 {
+    font-size: 30px;
   }
 
-  .login-left {
-    min-height: 420px;
-    padding: 30px;
+  .auth-hero > p {
+    font-size: 13px;
   }
 
-  .welcome-content h1 {
-    font-size: 34px;
+  .campus-visual {
+    padding: 14px;
+    gap: 13px;
+  }
+
+  .campus-building {
+    width: 60px;
+    height: 60px;
+    min-width: 60px;
+    font-size: 32px;
+  }
+
+  .auth-right {
+    padding: 35px 20px;
+  }
+
+  .form-heading h1 {
+    font-size: 29px;
   }
 }

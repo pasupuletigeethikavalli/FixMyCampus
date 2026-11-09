@@ -22,7 +22,6 @@ function App() {
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
 
-  // Handle input changes
   const handleChange = (e) => {
     setForm({
       ...form,
@@ -30,7 +29,6 @@ function App() {
     });
   };
 
-  // Handle login and registration
   const handleSubmit = async (e) => {
     e.preventDefault();
     setMessage("");
@@ -59,6 +57,7 @@ function App() {
         });
 
         localStorage.setItem("token", response.data.token);
+
         localStorage.setItem(
           "user",
           JSON.stringify(response.data.user)
@@ -77,172 +76,235 @@ function App() {
     }
   };
 
-  // Show dashboard after login
   if (loggedIn) {
     return <Dashboard />;
   }
 
-  // Login and registration page
   return (
-    <div className="login-container">
+    <div className="auth-page">
 
-      <div className="login-left">
+      {/* LEFT CAMPUS BRANDING PANEL */}
+      <section className="auth-left">
 
-        <div className="brand">
-          <span className="brand-icon">F</span>
-          <h2>FixMyCampus</h2>
+        <div className="auth-brand">
+          <div className="auth-logo">F</div>
+
+          <div>
+            <h2>FixMyCampus</h2>
+            <span>Campus Solutions</span>
+          </div>
         </div>
 
-        <div className="welcome-content">
+        <div className="auth-hero">
 
-          <span className="tagline">
+          <span className="auth-eyebrow">
             YOUR CAMPUS, YOUR VOICE
           </span>
 
-          <h1>Making Your Campus a Better Place.</h1>
+          <h1>
+            Making Your Campus
+            <br />
+            a Better Place.
+          </h1>
 
           <p>
             Report campus issues, track complaints and help
-            create a better learning environment.
+            create a better learning environment for everyone.
           </p>
 
-          <div className="feature">
-            ✓ Easy complaint reporting
+          <div className="auth-features">
+
+            <div className="auth-feature">
+              <span>✓</span>
+              Easy complaint reporting
+            </div>
+
+            <div className="auth-feature">
+              <span>✓</span>
+              Real-time status tracking
+            </div>
+
+            <div className="auth-feature">
+              <span>✓</span>
+              Better campus experience
+            </div>
+
           </div>
 
-          <div className="feature">
-            ✓ Real-time status tracking
-          </div>
+          <div className="campus-visual">
 
-          <div className="feature">
-            ✓ Better campus experience
+            <div className="campus-building">
+              🏫
+            </div>
+
+            <div className="visual-text">
+              <strong>Build a Better Campus</strong>
+              <span>Every complaint makes a difference.</span>
+            </div>
+
           </div>
 
         </div>
 
-        <p className="copyright">
+        <div className="auth-footer">
           © 2026 FixMyCampus. All rights reserved.
-        </p>
+        </div>
 
-      </div>
+      </section>
 
-      <div className="login-right">
+      {/* RIGHT AUTHENTICATION PANEL */}
+      <section className="auth-right">
 
-        <form
-          className="login-form"
-          onSubmit={handleSubmit}
-        >
+        <div className="auth-form-wrapper">
 
-          <span className="form-tag">
-            STUDENT PORTAL
-          </span>
+          <div className="form-heading">
 
-          <h1>
-            {isRegister ? "Create Account" : "Welcome Back!"}
-          </h1>
+            <div className="form-heading-icon">
+              {isRegister ? "👤" : "🎓"}
+            </div>
 
-          <p className="form-description">
-            {isRegister
-              ? "Register to start improving your campus."
-              : "Sign in to continue to your account."}
-          </p>
+            <span className="auth-form-tag">
+              STUDENT PORTAL
+            </span>
 
-          {isRegister && (
-            <>
-              <label>Full Name</label>
+            <h1>
+              {isRegister
+                ? "Create Account"
+                : "Welcome Back!"}
+            </h1>
+
+            <p>
+              {isRegister
+                ? "Join us in making your campus better."
+                : "Sign in to continue to your account."}
+            </p>
+
+          </div>
+
+          <form
+            className="auth-form"
+            onSubmit={handleSubmit}
+          >
+
+            {isRegister && (
+              <>
+                <div className="auth-input-group">
+                  <label>Full Name</label>
+
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="Enter your full name"
+                    value={form.name}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+
+                <div className="auth-input-group">
+                  <label>Department</label>
+
+                  <input
+                    type="text"
+                    name="department"
+                    placeholder="Example: CSE"
+                    value={form.department}
+                    onChange={handleChange}
+                  />
+                </div>
+
+                <div className="auth-input-group">
+                  <label>Phone Number</label>
+
+                  <input
+                    type="tel"
+                    name="phone"
+                    placeholder="Enter your phone number"
+                    value={form.phone}
+                    onChange={handleChange}
+                  />
+                </div>
+              </>
+            )}
+
+            <div className="auth-input-group">
+              <label>Email Address</label>
 
               <input
-                type="text"
-                name="name"
-                placeholder="Enter your full name"
-                value={form.name}
+                type="email"
+                name="email"
+                placeholder="Enter your email address"
+                value={form.email}
                 onChange={handleChange}
                 required
               />
+            </div>
 
-              <label>Department</label>
-
-              <input
-                type="text"
-                name="department"
-                placeholder="Example: CSE"
-                value={form.department}
-                onChange={handleChange}
-              />
-
-              <label>Phone Number</label>
+            <div className="auth-input-group">
+              <label>Password</label>
 
               <input
-                type="tel"
-                name="phone"
-                placeholder="Enter your phone number"
-                value={form.phone}
+                type="password"
+                name="password"
+                placeholder="Enter your password"
+                value={form.password}
                 onChange={handleChange}
+                minLength={6}
+                required
               />
-            </>
-          )}
 
-          <label>Email Address</label>
+              {isRegister && (
+                <span className="password-hint">
+                  Password must contain at least 6 characters.
+                </span>
+              )}
+            </div>
 
-          <input
-            type="email"
-            name="email"
-            placeholder="Enter your email"
-            value={form.email}
-            onChange={handleChange}
-            required
-          />
+            <button
+              className="auth-submit-button"
+              type="submit"
+              disabled={loading}
+            >
+              {loading
+                ? "Please wait..."
+                : isRegister
+                  ? "Create Account →"
+                  : "Sign In →"}
+            </button>
 
-          <label>Password</label>
+            {message && (
+              <div className="auth-message">
+                {message}
+              </div>
+            )}
 
-          <input
-            type="password"
-            name="password"
-            placeholder="Enter your password"
-            value={form.password}
-            onChange={handleChange}
-            minLength={6}
-            required
-          />
+          </form>
 
-          <button
-            type="submit"
-            disabled={loading}
-          >
-            {loading
-              ? "Please wait..."
-              : isRegister
-                ? "Create Account →"
-                : "Sign In →"}
-          </button>
-
-          {message && (
-            <p className="message">
-              {message}
-            </p>
-          )}
-
-          <p className="register-text">
+          <div className="auth-switch">
 
             {isRegister
-              ? "Already have an account? "
-              : "Don't have an account? "}
+              ? "Already have an account?"
+              : "Don't have an account?"}
 
-            <span
+            <button
+              type="button"
               onClick={() => {
                 setIsRegister(!isRegister);
                 setMessage("");
               }}
-              style={{ cursor: "pointer" }}
             >
               {isRegister ? "Sign In" : "Register Now"}
-            </span>
+            </button>
 
-          </p>
+          </div>
 
-        </form>
+          <div className="auth-security">
+            🔒 Your account information is securely protected.
+          </div>
 
-      </div>
+        </div>
+
+      </section>
 
     </div>
   );
